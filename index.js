@@ -110,7 +110,7 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
             'text-valign': 'top',
             'text-halign': 'center',
             'background-color':'#F1F1F1',
-            'font-size':'30'
+            'font-size':'40'
           }
         },
         {
