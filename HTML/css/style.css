@@ -20,20 +20,20 @@ h2 {
 }
 
 .legend-image {
-    width: 60%;
-    height: auto;
+    width: 40%;
+    height: 80px;
 }
 
 .squares {
-    display: flex;
+display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 40%; /* remaining width */
-    padding-left: 10px; /* optional, add some space between image and squares */
+    width: 15%; /* remaining width */
+    margin-left: 10%;
 }
 
 .square {
-    background: #000; /* color of the squares */
+   background: #9b9b9b; /* color of the squares */
 }
 
 .sq1 {
@@ -56,10 +56,6 @@ h2 {
     height: 25px;
 }
 
-.sq5 {
-    width: 30px;
-    height: 30px;
-}
 
 .border_green {
     border: 3px solid #76b72a;
