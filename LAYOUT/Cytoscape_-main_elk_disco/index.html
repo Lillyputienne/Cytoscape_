@@ -31,28 +31,33 @@
                         <h2>Parameters</h2>
 
                         <div class="border_green">
+                            <label for="log_ratio">Log Ratio:</label>
                             <select id="log_ratio">
                                 <option value="">--Please choose an option--</option>
                             </select>
                         </div>
-
+                        
                         <div class="border_green">
+                            <label for="p_values">P Values:</label>
                             <select id="p_values">
                                 <option value="">--Please choose an option--</option>
                             </select>
                         </div>
-
+                        
                         <div class="border_green">
+                            <label for="abundance">Abundance:</label>
                             <select id="abundance">
                                 <option value="">--Please choose an option--</option>
                             </select>
                         </div>
-
+                        
                         <div class="border_green">
+                            <label for="algorithm">Algorithm:</label>
                             <select id="algorithm">
                                 <option value="">--Please choose an option--</option>
                             </select>
                         </div>
+                        
 
                         <button id='go' class="left_button">Go</button>
                     </div>
@@ -61,9 +66,24 @@
                     <div id="graph" class="border_blue">
                         <div id="cy"></div>
                     </div>
-                    <div id="legend" class="border_blue">
-                        <h2>Legend</h2>
+                <div id="legend" class="border_blue">
+                    <h2>Legend</h2>
+                    <div class="legend-flex">
+                    <h4>Node Fill Color: </h4>
+                    <img src="legend.png" alt="color gradient" class="legend-image">
+                    <h4 class="node-size">Node Size: <span id="node-selction"></span></h4>
+                    <div class="squares">
+                        <div class="value" id="minValue"></div>
+                        <div class="square sq1"></div>
+                        <div class="square sq2"></div>
+                        <div class="square sq3"></div>
+                        <div class="square sq4"></div>
+                        <div class="value" id="maxValue"></div>
                     </div>
+                    
+                </div>
+                </div>
+
                     <div id="lower_buttons">
                         <div class="lower_button">
                             <button>JPEG Download</button>
@@ -85,9 +105,10 @@
 
     <!-- <script src="./HTML/js/index.js"></script> -->
     <script src="./HTML/js/menu.js"></script>
-    
-    <script src="https://unpkg.com/elkjs/lib/elk.bundled.js"></script>
-    <script src="./LAYOUT/ELK_disco/cytoscape-elk.js"></script>
+
+    <script src="https://unpkg.com/layout-base/layout-base.js"></script>
+    <script src="https://unpkg.com/cose-base/cose-base.js"></script>
+    <script src="https://unpkg.com/cytoscape-fcose/cytoscape-fcose.js"></script>
 </body>
 
 </html>
