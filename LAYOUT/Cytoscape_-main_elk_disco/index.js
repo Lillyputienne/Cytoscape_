@@ -47,15 +47,9 @@ function min_max_ab(json,abundance) {
       }
     }
   }
-  document.getElementById("minValue").textContent = min_ab.toFixed(2);
-  document.getElementById("maxValue").textContent = max_ab.toFixed(2);
 
   return [min_ab, max_ab];
 }
-
-document.getElementById('abundance').addEventListener('change', function() {
-  document.getElementById('node-selction').innerText = this.value;
-});
 
 function afficher_cytoscape(json, log_ratio, p_value, abundance) {
   var [min, max] = min_max_ab(json, abundance);
