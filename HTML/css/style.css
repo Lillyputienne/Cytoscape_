@@ -95,13 +95,15 @@ table {
     height: 80px;
 }
 
-  .squares {
+  .node-size{
+    margin-left: 5%;
+}
+
+.squares {
     display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 15%; /* remaining width */
-        margin-left: 10%;
-    }
+    align-items: center;
+    justify-content: space-between;
+}
     
     .square {
        background: #9b9b9b; /* color of the squares */
