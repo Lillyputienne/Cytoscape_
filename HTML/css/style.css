@@ -2,67 +2,23 @@ html, body {
     height: 100%;
 }
 
-h2 {
-    margin: 7px;
+h2,h1 {
+    margin: 5px;
 
+}
+
+p {
+    margin: 2px;
 }
 
 .border_blue {
     border: 3px solid #36a9e0;
     border-radius: 40px;
-    align-items: center;
 }
 
-.legend-flex{
-    display: flex;
-    height:60%;
+.align-center{
+    text-align: center;
 }
-
-.legend-image {
-    width: 40%;
-    height: 80px;
-}
-
-.node-size{
-    margin-left: 5%;
-}
-
-.squares {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* width: 15%; */
-}
-
-.square {
-    background: #9b9b9b; /* color of the squares */
-}
-
-.sq1 {
-    width: 10px;
-    height: 10px;
-}
-
-.sq2 {
-    width: 15px;
-    height: 15px;
-}
-
-.sq3 {
-    width: 20px;
-    height: 20px;
-}
-
-.sq4 {
-    width: 25px;
-    height: 25px;
-}
-
-.sq5 {
-    width: 30px;
-    height: 30px;
-}
-
 
 .border_green {
     border: 3px solid #76b72a;
@@ -79,16 +35,6 @@ table {
     height: 100%;
 }
 
-#everything {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-}
-
-#upper {
-    height: 5%;
-    text-align: center;
-}
 
 #lower {
     height: 95%;
@@ -97,6 +43,7 @@ table {
 .left {
     width: 25%;
     text-align: center;
+    vertical-align: top;
 }
 
 .right {
@@ -109,28 +56,78 @@ table {
 }
 
 .lower_button {
-    width: 33%;
-    float: left;
+    /* width: 60%; */
+    text-align: center;
+    /* float: left; */
     padding: 0;
     margin: 0;
 }
 
-#graph {
-    height: 65%;
+/* #graph {
+    height: 75%;
 
-}
+} */
 
 #legend {
-    height: 20%;
+    height: 18%;
+    width: 97%;
 }
 
 #lower_buttons {
     height: 5%;
 }
 
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+
 #cy {
-    height: 95%;
+    height: 75%;
     width: 95%;
     position: relative;
-    left: 10px;
   }
+
+  .legend-flex{
+    display: flex;
+    height:60%;
+}
+
+.legend-image {
+    width: 40%;
+    height: 80px;
+}
+
+  .squares {
+    display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 5%;
+    }
+    
+    .square {
+       background: #9b9b9b; /* color of the squares */
+       text-align: center;
+    }
+    
+    #sq1 {
+        width: 30px;
+        height: 30px;
+    }
+    
+    #sq2 {
+        width: 35px;
+        height: 35px;
+    }
+    
+    #sq3 {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #sq4 {
+        width: 45px;
+        height: 45px;
+    }
