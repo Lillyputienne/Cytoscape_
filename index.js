@@ -4,13 +4,21 @@
 
 var input_file = document.querySelector('#json_input_file');
 var file = '';
+
 var go = document.querySelector('#go');
+
 var input_log_ratio = document.querySelector('#log_ratio');
 var log_ratio = '';
+
 var input_p_value = document.querySelector('#p_values');
 var p_value = '';
+
 var input_abundance = document.querySelector('#abundance');
 var abundance = '';
+
+var input_algo = document.querySelector('#algorithm');
+var algo = '';
+
 
 let elk_algorithms = {
   'elk_disco': 'org.eclipse.elk.disco',
@@ -207,15 +215,31 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
   
 };
 
+function check_parameters(event) {
+  event.preventDefault();
+  if (file == "") {
+    alert("Please choose a JSON file.")
+    return false;
+  }
+
+  else if (algo == "" || log_ratio == "" || p_value =="" || abundance == "") {
+    alert("Please choose an option for all the parameters.");
+    return false;
+  }
+  return true;
+}
+
 go.addEventListener('click', function() { 
-  var reader = new FileReader();
-    
-  reader.onload = function() {
-    var data_file = reader.result;
-    var json = JSON.parse(data_file);   
+  if (check_parameters(event)) {
+    var reader = new FileReader();
+      
+    reader.onload = function() {
+      var data_file = reader.result;
+      var json = JSON.parse(data_file);
 
-    afficher_cytoscape(json, log_ratio, p_value, abundance);
-  } 
+      
+      afficher_cytoscape(json, log_ratio, p_value, abundance);
+    } 
 
-  reader.readAsText(file);
+    reader.readAsText(file);    
 });
