@@ -12,97 +12,97 @@
 </head>
 
 <body>
-
     <table border="0">
-        <tr>
-            <td></td>
-            <td class="border_green align-center">
-                <h1>Create network</h1>
-            </td>
-        </tr>
-        <tr>
-            <td class="left">
-                <div id="json_input_square" class="border_green">
-                    <h2>JSON file input</h2>
-                    <input type="file" class="left_button" value="Submit" id="json_input_file">
-                </div>
-                <div class="border_green">
-                    <h2>Parameters</h2>
+        <td class="left">
 
-                    <div class="border_blue">
-                        <p>Log Ratio :</p>
-                        <select id="log_ratio">
-                            <option value="">--Please choose an option--</option>
-                        </select>
-                    </div>
+            <table style="width: 100%; " border="0">
+                <tr>
+                    <td class="border_green">
+                        <h1>Create network</h1>                              
+                    </td>
+                </tr>
 
-                    <div class="border_blue">
-                        <p>P-value :</p>
-                        <select id="p_values">
-                            <option value="">--Please choose an option--</option>
-                        </select>
-                    </div>
-
-                    <div class="border_blue">
-                        <p>Abundance :</p> 
-                        <select id="abundance">
-                            <option value="">--Please choose an option--</option>
-                        </select>
-                    </div>
-
-                    <div class="border_blue">
-                        <p>Algorithm :</p>
-                        <select id="algorithm">
-                            <option value="">--Please choose an option--</option>
-                            <option value="fcose">Fcose</option>
-                            <option value="cola">Cola</option>
-                            <option value="cise">Cise</option>
-                            <option value="elk_force">Elk - Force</option>
-                            <option value="elk_spore">Elk - Spore</option>
-                            <option value="elk_disco">Elk - Disco</option>                                        
-                        </select>
-                    </div>
-
-                    <button id='go' class="left_button">Go</button>
-                </div>
-                <div class="border_green">
-                    <h2>Download</h2>
-                    <div id="lower_buttons">
-                        <button id="jpeg">JPEG</button>
-                        <button id="png" >PNG</button>
-                        <button id="json">JSON</button>
-                    </div>
-                </div>
-            </td>
-            <td id="graph" class="right border_green">
-                <div id="cy">
-                </div>
-                <div id="legend" class="border_blue">
-                    <h2>Legend</h2>
-                    <div class="legend-flex">
-                    <h4>Node Fill Color: </h4>
-                        <img src="legend.png" alt="color gradient" class="legend-image">
-                    <h4 class="node-size">Node Size: <span id="node-selection"></span></h4>
-                        <div class="squares">
-                            <div class="square" id="sq1"></div>
-                            <div class="square" id="sq2"></div>
-                            <div class="square" id="sq3"></div>
-                            <div class="square" id="sq4"></div>
+                <tr>
+                    <td>                    
+                        <div id="json_input_square" class="border_green">
+                            <h2>JSON file input</h2>
+                            <input type="file" class="left_button" value="Submit" id="json_input_file">
                         </div>
+                        <div class="border_green">
+                            <h2>Parameters</h2>
+
+                            <div class="border_blue">
+                                <p>Log Ratio :</p>
+                                <select id="log_ratio">
+                                    <option value="">--Please choose an option--</option>
+                                </select>
+                            </div>
+
+                            <div class="border_blue">
+                                <p>P-value :</p>
+                                <select id="p_values">
+                                    <option value="">--Please choose an option--</option>
+                                </select>
+                            </div>
+
+                            <div class="border_blue">
+                                <p>Abundance :</p> 
+                                <select id="abundance">
+                                    <option value="">--Please choose an option--</option>
+                                </select>
+                            </div>
+
+                            <div class="border_blue">
+                                <p>Algorithm :</p>
+                                <select id="algorithm">
+                                    <option value="">--Please choose an option--</option>
+                                    <option value="none">Without algorithm</option>
+                                    <option value="fcose">Fcose</option>
+                                    <option value="cola">Cola</option>
+                                    <option value="cise">Cise</option>
+                                    <option value="elk1">Elk - Force</option>
+                                    <option value="elk2">Elk - SPOrE</option>
+                                    <option value="elk3">Elk - DisCo</option>                                        
+                                </select>
+                            </div>
+
+                            <button id='go' class="left_button">Go</button>
+                        </div>
+                        <div class="border_green">
+                            <h2>Download</h2>
+                            <div id="lower_buttons">
+                                <button id="jpeg">JPEG</button>
+                                <button id="png" >PNG</button>
+                                <button id="json">JSON</button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>                        
+            </table>                    
+        </td>
+
+        <td id="graph" class="right border_green">
+            <div id="cy">
+            </div>
+            <div id="legend" class="border_blue">
+                <h2>Legend</h2>
+                <div class="legend-flex">
+                <h4>Node Fill Color: </h4>
+                    <img src="legend.png" alt="color gradient" class="legend-image">
+                <h4 class="node-size">Node Size: <span id="node-selection"></span></h4>
+                    <div class="squares">
+                        <div class="square" id="sq1"></div>
+                        <div class="square" id="sq2"></div>
+                        <div class="square" id="sq3"></div>
+                        <div class="square" id="sq4"></div>
                     </div>
                 </div>
-            </td>
-        </tr>
+            </div>
+        </td>
     </table>
 
     <img src="./Tableau_layout.png" class="image">
     <img src="./Tableau_layout_2.png" class="image">
-
-    <!-- <script src="https://cdn.jsdelivr.net/npm/cytoscape-elk@2.1.0/dist/cytoscape-elk.min.js"></script> -->
-    <!-- <script src="./layouts/ELK/cytoscape-elk.js"></script> -->
-    <!-- <script src="./layouts/CISE/cytoscape-cise.js"></script>
-    <script src="./layouts/FCOSE/cytoscape-fcose.js"></script> -->
-
 
     <script src="index.js"></script>
     <script src="donwload.js"></script>
