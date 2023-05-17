@@ -66,12 +66,19 @@ var cy = window.cy = cytoscape({
     layout: {
       name: 'cise',
       idealEdgeLength: 20,
-      edgeElasticity: 0.20,
+      edgeElasticity: 0.2,
       nodeOverlap: 15,
       nodeRepulsion: 800,
       nodeAttraction: 1000,
       gravity: 50,
-      numIter: 1000
+      numIter: 1000,
+      tilingPaddingVertical: 10,
+      tilingPaddingHorizontal: 10,
+      tilingPaddingRatio: 0.5,
+      randomize: true,
+      animate: false,
+      animationDuration: 500,
+      animationEasing: 'ease-out'
  // Redimensionnement automatique
    
     }
