@@ -56,6 +56,9 @@ input_abundance.addEventListener('input', function() {
   abundance = input_abundance.value;
 });
 
+input_algo.addEventListener('input',function() {
+  algo = input_algo.value;
+})
 
 function min_max_ab(json,abundance) {
   var min_ab = Infinity;
