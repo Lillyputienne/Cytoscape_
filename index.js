@@ -242,4 +242,8 @@ go.addEventListener('click', function() {
     } 
 
     reader.readAsText(file);    
+  };
+
+
+  
 });
