@@ -2,72 +2,42 @@
  * Arij Alkharrat, Elsa Coutaud, Lilly Duverger, Caroline Sancho
  */
 
-var input_file = document.querySelector('#json_input_file');
-var file = '';
 
 var go = document.querySelector('#go');
 
-var input_log_ratio = document.querySelector('#log_ratio');
+// Creation of variables for the different parameters given by the user.
+var file = '';
+document.querySelector('#json_input_file').addEventListener('input',function() {
+  file = document.querySelector('#json_input_file').files[0];
+});
+
 var log_ratio = '';
+document.querySelector('#log_ratio').addEventListener('input', function() {
+  log_ratio = document.querySelector('#log_ratio').value;
+});
 
-var input_p_value = document.querySelector('#p_values');
 var p_value = '';
+document.querySelector('#p_values').addEventListener('input', function() {
+  p_value = document.querySelector('#p_values').value;
+});
 
-var input_abundance = document.querySelector('#abundance');
 var abundance = '';
+document.querySelector('#abundance').addEventListener('input', function() {
+  abundance = document.querySelector('#abundance').value;
+});
 
-var input_algo = document.querySelector('#algorithm');
 var algo = '';
-
-
-let elk_algorithms = {
-  'elk_disco': 'org.eclipse.elk.disco',
-  'elk_force': 'org.eclipse.elk.force',
-  'elk_spore': 'org.eclipse.elk.sporeOverlap',
-}
-
-let elk_layout = {
-  'edgeRouting': 'organic',
-  'algorithm': '',
-  'crossingMinimization': 'LAYER_INTERCHANGE',
-  'layered.spacing.nodeNodeBetweenLayer': 100,
-  'layered.spacing.nodeNodeWithinLayer': 50,
-  'layered.spacing.edgeNodeBetweenLayer': 50,
-  'spacing.edgeEdge': 50,
-  'spacing.nodeNode': 50,
-  'spacing.edgeNode': 50,
-  'edgeLabelPlacement': 'NONE'
-}
-
-
-input_file.addEventListener('input',function() {
-  file = input_file.files[0];
-});
-
-input_log_ratio.addEventListener('input', function() {
-  log_ratio = input_log_ratio.value;
-});
-
-input_p_value.addEventListener('input', function() {
-  p_value = input_p_value.value;
-});
-
-input_abundance.addEventListener('input', function() {
-  abundance = input_abundance.value;
-});
-
-input_algo.addEventListener('input',function() {
-  algo = input_algo.value;
+document.querySelector('#algorithm').addEventListener('input',function() {
+  algo = document.querySelector('#algorithm').value;
 })
 
+
+
 function min_max_ab(json,abundance) {
+  // Return the minimum and maximum values among all abundance values contained in the json file. 
   var min_ab = Infinity;
-  let sizes = [];
   for (let node of json.nodes) {
     if (`${abundance}` in node.data) {
-      if(!sizes.includes(node.data[abundance])){
-        sizes.push(node.data[abundance]);
-      }
       if (node.data[abundance] < min_ab) {
         min_ab = node.data[abundance];
       }
@@ -83,39 +53,14 @@ function min_max_ab(json,abundance) {
     }
   }
 
-  sizes.sort((a, b) => {
-    return a - b;
-  });
-
-  var smaller_half = sizes.slice(0, sizes.length / 2);
-  var bigger_half = sizes.slice(sizes.length / 2 + 1);
-
-  let sum_smaller_half = smaller_half.reduce((a, b) => a + b, 0);
-  let avg_smaller_half = (sum_smaller_half / smaller_half.length) || 0;
-
-  let sum_bigger_half = bigger_half.reduce((a, b) => a + b, 0);
-  let avg_bigger_half = (sum_bigger_half / bigger_half.length) || 0;
-  
-  
-  document.getElementById("sq1").textContent = min_ab.toFixed(2);
-  document.getElementById("sq2").textContent = avg_smaller_half.toFixed(2);
-  document.getElementById("sq3").textContent = avg_bigger_half.toFixed(2);
-  document.getElementById("sq4").textContent = max_ab.toFixed(2);
   return [min_ab, max_ab];
 }
 
-document.getElementById('abundance').addEventListener('change', function() {
-  document.getElementById('node-selection').innerText = this.value;
-});
-
-
-function afficher_cytoscape(json, log_ratio, p_value, abundance) {
+function display_cytoscape(json, log_ratio, p_value, abundance, layout_options) {
+  // Create and display a cytoscape graph.
   var [min, max] = min_max_ab(json, abundance);
-  console.log(`node[${log_ratio} <= 0]`);
-  console.log(p_value);
-  console.log(`node[${abundance}]`);
 
-    var settings = {
+    var cy = window.cy = cytoscape({
       container: document.getElementById('cy'),
       
       boxSelectionEnabled: false,
@@ -128,10 +73,11 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
             'text-valign': 'center',
             'text-halign': 'center',
             'shape':'ellipse',
-            'font-size':'20'
+            'font-size':'40',
           }
         },
 
+        // Size of the nodes
         {
           selector: `node[${abundance}]`,
           css: {
@@ -140,20 +86,23 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
           },
         },
 
+        // Color of the nodes, for -2 to 0.
         {
           selector: `node[${log_ratio} <= 0]`,
           css: {
-            'background-color':`mapData(${log_ratio},-2,0,magenta,white)`,
+            'background-color':`mapData(${log_ratio},-2,0,#FF00FF,#FFFFFF)`,
           }
         },
 
+        // Color of the nodes, for 0 to 2.
         {
           selector: `node[${log_ratio} > 0]`,
           css: {
-            'background-color':`mapData(${log_ratio},0,2,white,green)`,
+            'background-color':`mapData(${log_ratio},0,2,#FFFFFF,#008000)`,
           }
         },
 
+        // Shape of the nodes
         {
           selector: `node[${p_value} > 0.05]`,
           css: {
@@ -161,6 +110,7 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
           }
         },
 
+        // Cluster
         {
           selector: ':parent',
           css: {
@@ -168,9 +118,10 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
             'text-valign': 'top',
             'text-halign': 'center',
             'background-color':'#F1F1F1',
-            'font-size':'40'
+            'font-size':'50'
           }
         },
+
         {
           selector: 'edge',
           css: {
@@ -183,7 +134,24 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
       
       elements: json,
       
-      layout: {
+      layout: layout_options,
+    });
+  
+};
+
+function switch_algo(algo) {
+  // Returns the options for the selected algorithm (algo).
+  var layout_options={};
+
+  switch (algo) {
+    case 'none' : 
+      layout_options = {
+        name: 'preset',
+      }
+      break;
+
+    case 'fcose' : 
+      layout_options = {
         name: 'fcose',
         nodeDimensionsIncludeLabels: true,
         randomize: true,
@@ -198,29 +166,88 @@ function afficher_cytoscape(json, log_ratio, p_value, abundance) {
         gravity: 0.25,
         numIter: 2500,
         tile: true,
-      }
-    };
-
-    var selected_algorithm = document.getElementById('algorithm').value;
-
-    switch(selected_algorithm){
-      case 'fcose': break; // since this is the layout default value
-      case 'cola': break; //! not implemented yet
-      case 'cise': break; //! not implemented yet
-      case '': break; // in case it is empty
-      default: // elk
-        elk_layout.algorithm = elk_algorithms[selected_algorithm];
-        settings.layout.name = 'elk';
-        settings.layout.elk = elk_layout;
-    }
+      };
+      break;
     
-    var cy = window.cy = cytoscape(settings);
-  
+    case 'cise' :
+      layout_options = {
+        name: 'cise',
+        idealEdgeLength: 20,
+        edgeElasticity: 0.20,
+        nodeOverlap: 15,
+        nodeRepulsion: 800,
+        nodeAttraction: 1000,
+        gravity: 50,
+        numIter: 1000
+      };
+      break;
+
+    case 'cola' : 
+      break;
+    
+    case 'elk_force' : 
+      layout_options = {
+        name: 'elk',
+        elk: {
+          'edgeRouting': 'organic',
+          'algorithm': 'org.eclipse.elk.force',
+          'crossingMinimization': 'LAYER_INTERCHANGE',
+          'layered.spacing.nodeNodeBetweenLayer': 100,
+          'layered.spacing.nodeNodeWithinLayer': 50,
+          'layered.spacing.edgeNodeBetweenLayer': 50,
+          'spacing.edgeEdge': 50,
+          'spacing.nodeNode': 50,
+          'spacing.edgeNode': 50,
+          'edgeLabelPlacement': 'NONE'
+        }
+      };
+      break;
+    
+    case 'elk_spore' :
+      layout_options = {
+        name: 'elk',
+        elk: {
+          'edgeRouting': 'organic',
+          'algorithm': 'org.eclipse.elk.sporeOverlap',
+          'crossingMinimization': 'LAYER_INTERCHANGE',
+          'layered.spacing.nodeNodeBetweenLayer': 100,
+          'layered.spacing.nodeNodeWithinLayer': 50,
+          'layered.spacing.edgeNodeBetweenLayer': 50,
+          'spacing.edgeEdge': 50,
+          'spacing.nodeNode': 50,
+          'spacing.edgeNode': 50,
+          'edgeLabelPlacement': 'NONE'
+        }
+      };
+      break;
+
+    case 'elk_disco' : 
+      layout_options = {
+        name: 'elk',
+        elk: {
+          'edgeRouting': 'organic',
+          'algorithm': 'org.eclipse.elk.disco',
+          'crossingMinimization': 'LAYER_INTERCHANGE',
+          'layered.spacing.nodeNodeBetweenLayer': 100,
+          'layered.spacing.nodeNodeWithinLayer': 50,
+          'layered.spacing.edgeNodeBetweenLayer': 50,
+          'spacing.edgeEdge': 50,
+          'spacing.nodeNode': 50,
+          'spacing.edgeNode': 50,
+          'edgeLabelPlacement': 'NONE'
+        }
+      };
+      break;
+
+  };
+  return layout_options;
 };
 
 function check_parameters(event) {
+  // Checks if the user has chosen all parameters and a JSON file. 
   event.preventDefault();
-  if (file == "") {
+  var json_format = /(\.json)$/i;
+  if (file == "" || (!json_format.exec(file.name))) {
     alert("Please choose a JSON file.")
     return false;
   }
@@ -230,9 +257,24 @@ function check_parameters(event) {
     return false;
   }
   return true;
-}
+};
 
-go.addEventListener('click', function() { 
+function size_legend(json, abundance) {
+  // Give the size legend. 
+  var [min, max] = min_max_ab(json, abundance);
+  var size_2 = (max-min)*0.25+min;
+  var size_3 = (max-min)*0.5+min;
+  var size_4 = (max-min)*0.75+min;
+
+  document.getElementById("sq1").textContent = min.toFixed(2);
+  document.getElementById("sq2").textContent = size_2.toFixed(2);
+  document.getElementById("sq3").textContent = size_3.toFixed(2);
+  document.getElementById("sq4").textContent = size_4.toFixed(2);
+  document.getElementById("sq5").textContent = max.toFixed(2);
+};
+
+
+go.addEventListener('click', function(event) { 
   if (check_parameters(event)) {
     var reader = new FileReader();
       
@@ -240,13 +282,13 @@ go.addEventListener('click', function() {
       var data_file = reader.result;
       var json = JSON.parse(data_file);
 
-      
-      afficher_cytoscape(json, log_ratio, p_value, abundance);
+      var layout_options = switch_algo(algo);
+      display_cytoscape(json, log_ratio, p_value, abundance, layout_options);
+      size_legend(json,abundance);
     } 
 
     reader.readAsText(file);    
   };
-
-
-  
 });
+
+
