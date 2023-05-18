@@ -8,29 +8,29 @@ var go = document.querySelector('#go');
 // Creation of variables for the different parameters given by the user.
 var file = '';
 document.querySelector('#json_input_file').addEventListener('input',function() {
-  file = document.querySelector('#json_input_file').files[0];
+  file = this.files[0];
 });
 
 var log_ratio = '';
 document.querySelector('#log_ratio').addEventListener('input', function() {
-  log_ratio = document.querySelector('#log_ratio').value;
+  log_ratio = this.value;
 });
 
 var p_value = '';
 document.querySelector('#p_values').addEventListener('input', function() {
-  p_value = document.querySelector('#p_values').value;
+  p_value = this.value;
 });
 
 var abundance = '';
 document.querySelector('#abundance').addEventListener('input', function() {
-  abundance = document.querySelector('#abundance').value;
+  abundance = this.value;  
 });
 
 var algo = '';
 document.querySelector('#algorithm').addEventListener('input',function() {
-  algo = document.querySelector('#algorithm').value;
-  document.getElementById('node-selection').innerText = this.value;
+  algo = this.value;
 })
+
 
 function min_max_ab(json,abundance) {
   // Return the minimum and maximum values among all abundance values contained in the json file. 
@@ -260,6 +260,8 @@ function check_parameters(event) {
 
 function size_legend(json, abundance) {
   // Give the size legend. 
+  document.getElementById('node-selection').innerText = abundance;
+  
   var [min, max] = min_max_ab(json, abundance);
   var size_2 = (max-min)*0.25+min;
   var size_3 = (max-min)*0.5+min;
