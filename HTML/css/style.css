@@ -113,21 +113,26 @@ table {
     }
     
     #sq1 {
+        width: 20px;
+        height: 20px;
+    }
+    
+    #sq2 {
+        width: 25px;
+        height: 25px;
+    }
+    
+    #sq3 {
         width: 30px;
         height: 30px;
     }
     
-    #sq2 {
+    #sq4 {
         width: 35px;
         height: 35px;
     }
-    
-    #sq3 {
+
+    #sq5 {
         width: 40px;
         height: 40px;
-    }
-    
-    #sq4 {
-        width: 45px;
-        height: 45px;
     }
