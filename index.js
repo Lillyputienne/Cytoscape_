@@ -29,9 +29,8 @@ document.querySelector('#abundance').addEventListener('input', function() {
 var algo = '';
 document.querySelector('#algorithm').addEventListener('input',function() {
   algo = document.querySelector('#algorithm').value;
+  document.getElementById('node-selection').innerText = this.value;
 })
-
-
 
 function min_max_ab(json,abundance) {
   // Return the minimum and maximum values among all abundance values contained in the json file. 
