@@ -56,7 +56,7 @@ function min_max_ab(json,abundance) {
 }
 
 function display_cytoscape(json, log_ratio, p_value, abundance, layout_options) {
-  // Create and display a cytoscape graph.
+  // Create, display and return a cytoscape graph.
   var [min, max] = min_max_ab(json, abundance);
 
     var cy = window.cy = cytoscape({
@@ -136,6 +136,7 @@ function display_cytoscape(json, log_ratio, p_value, abundance, layout_options) 
       layout: layout_options,
     });
   
+    return cy;
 };
 
 function switch_algo(algo) {
@@ -172,12 +173,21 @@ function switch_algo(algo) {
       layout_options = {
         name: 'cise',
         idealEdgeLength: 20,
-        edgeElasticity: 0.20,
+        edgeElasticity: 0.2,
         nodeOverlap: 15,
         nodeRepulsion: 800,
         nodeAttraction: 1000,
         gravity: 50,
-        numIter: 1000
+        numIter: 1000,
+        tilingPaddingVertical: 10,
+        tilingPaddingHorizontal: 10,
+        tilingPaddingRatio: 0.5,
+        randomize: true,
+        animate: false,
+        animationDuration: 500,
+        animationEasing: 'ease-out',
+        // nestingFactor: 0.1,
+   // Redimensionnement automatique
       };
       break;
 
@@ -284,8 +294,10 @@ go.addEventListener('click', function(event) {
       var json = JSON.parse(data_file);
 
       var layout_options = switch_algo(algo);
-      display_cytoscape(json, log_ratio, p_value, abundance, layout_options);
+      var cy = display_cytoscape(json, log_ratio, p_value, abundance, layout_options);
       size_legend(json,abundance);
+      var cyjs = cy.json();
+      console.log(cyjs);
     } 
 
     reader.readAsText(file);    
