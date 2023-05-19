@@ -16,10 +16,6 @@ p {
     border-radius: 40px;
 }
 
-.align-center{
-    text-align: center;
-}
-
 .border_green {
     border: 3px solid #76b72a;
     border-radius: 20px;
@@ -43,7 +39,6 @@ table {
 .left {
     width: 25%;
     text-align: center;
-    vertical-align: top;
 }
 
 .right {
@@ -63,13 +58,18 @@ table {
     margin: 0;
 }
 
-/* #graph {
-    height: 75%;
+#graph {
+    position: relative;
+}
 
-} */
+#cy {
+    height: 50%;
+    width: 90%;
+  }
+
 
 #legend {
-    height: 18%;
+    height: 20%;
     width: 97%;
 }
 
@@ -84,11 +84,6 @@ table {
     width: 70%;
   }
 
-#cy {
-    height: 75%;
-    width: 95%;
-    position: relative;
-  }
 
   .legend-flex{
     display: flex;
@@ -104,12 +99,11 @@ table {
     display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-left: 5%;
+        margin-left: 10%;
     }
     
     .square {
        background: #9b9b9b; /* color of the squares */
-       text-align: center;
     }
     
     #sq1 {

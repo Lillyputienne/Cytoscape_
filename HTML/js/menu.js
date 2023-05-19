@@ -45,7 +45,6 @@ function add_condition(log_ratio, p_value) {
 
 function change_organism(json) { 
     var organism = 'plant';
-    console.log(json.nodes)
     for (let node of json.nodes){
         if ('tissue_skin' in node.data) {
             organism = 'human';

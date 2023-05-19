@@ -192,6 +192,34 @@ function switch_algo(algo) {
       break;
 
     case 'cola' : 
+      layout_options = {
+        name: 'cola',
+        animate: false,
+        nodeDimensionsIncludeLabels: false,
+        avoidOverlap: true,
+        nodeSpacing: function( node ){ return 10 + node.width(); },
+        edgeLength: 50,
+        unconstrIter: 100,
+        userConstIter: 100,
+        allConstIter: 100,
+        convergenceThreshold: 0.01,
+        padding: 10,
+        randomize: true,
+        alignment: function( node ){ return null; },
+        flow: { axis: 'y', minSeparation: 40 },
+        groupingStrength: 0.1,
+        edgeSymDiffLength: 5,
+        edgeJaccardLength: 20,
+        nodeRepulsion: function( node ){ return 2048; },
+        nodeOverlap: 10,
+        idealEdgeLength: function( edge ){ return 30 + 30 * edge.weight(); },
+        edgeElasticity: function( edge ){ return 8; },
+        nestingFactor: 0.1,
+        gravity: 0.25,
+        numIter: 100,
+        sampleSize: 25,
+        quality: 'default'
+      }
       break;
     
     case 'elk_force' : 
@@ -296,8 +324,7 @@ go.addEventListener('click', function(event) {
       var layout_options = switch_algo(algo);
       var cy = display_cytoscape(json, log_ratio, p_value, abundance, layout_options);
       size_legend(json,abundance);
-      var cyjs = cy.json();
-      console.log(cyjs);
+      window.cy = cy;
     } 
 
     reader.readAsText(file);    
