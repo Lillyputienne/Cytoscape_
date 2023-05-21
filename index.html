@@ -100,9 +100,87 @@
             </div>
         </td>
     </table>
-
-    <img src="./Tableau_layout.png" class="image">
-    <img src="./Tableau_layout_2.png" class="image">
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table_black">
+        <tr>
+            <th class="border_black">Layout</th>
+            <th class="border_black">Uses</th>
+            <th class="border_black">Advantages</th>
+            <th class="border_black">Disadvantages</th>
+        </tr>
+        <tr>
+            <td class="border_black">cola
+                <img src="./images/cola.png" class="img" height="120px">
+            </td>
+            <td class="border_black"> When flexibility in node placement is needed. - When constraints need to be enforced.</td>
+            <td class="border_black">Features a powerful and flexible placement algorithm. Supports constraints and customization options.</td>
+            <td class="border_black">May be slower for large graphs. - May require fine-tuning to achieve desired results.	</td>
+        </tr>
+        <tr>
+            <td class="border_black">elk
+                <img src="./images/elk-mrtree.png" class="img" height="120px">
+            </td>
+            <td class="border_black">Suitable for hierarchical graphs. When fine-grained control over node placement is required.</td>
+            <td class="border_black">Supports various advanced placement options. - Handles hierarchical graphs. - Provides good automatic node placement.</td>
+            <td class="border_black">May be slower for large graphs. - Configuration can be complex.</td>
+        </tr>
+        <tr>
+            <td class="border_black">fcose
+                <img src="./images/fcose.png" class="img" height="120px">
+            </td>
+            <td class="border_black">Ideal for complex graphs requiring aesthetically pleasing layouts. - Suitable for both hierarchical and non-hierarchical graphs.</td>
+            <td class="border_black">Produces aesthetically pleasing results with complex graphs. - Supports both hierarchical and non-hierarchical graphs.</td>
+            <td class="border_black">May be slower for large graphs. - May require fine-tuning to achieve desired results.</td>
+        </tr>
+        <tr>
+            <td class="border_black">cise
+                <img src="./images/cise.png" class="img" height="120px">
+            </td>
+            <td class="border_black">Best suited for hierarchical graphs. - When compact and visually appealing layouts are desired.</td>
+            <td class="border_black">Specifically designed for hierarchical graphs. - Produces visually appealing and compact results for this type of graphs.</td>
+            <td class="border_black"> May require fine-tuning to achieve desired results. - May not be suitable for non-hierarchical graphs.</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="table_black">
+        <tr>
+            <th class="border_black">Layout & Algorithm</th>
+            <th class="border_black">Description</th>
+            <th class="border_black">Advantages</th>
+            <th class="border_black">Disadvantages</th>
+        </tr>
+        <tr>
+            <td class="border_black">Elk - Force
+                <img src="./images/org-eclipse-elk-force_preview_force_layout.png" class="img" height="100px">
+            </td>
+            <td class="border_black"> Force-based algorithm provided by the Eclipse Layout Kernel. Implements methods that follow physical analogies by simulating forces that move the nodes into a balanced distribution. Currently the original Eades model and the Fruchterman - Reingold model are supported.</td>
+            <td class="border_black">- Efficiently resolves node collisions.  Allows precise control over applied forces.</td>
+            <td class="border_black">- May require additional configuration parameters for good results.</td>
+        </tr>
+        <tr>
+            <td class="border_black">Elk - SPOrE Overlap Removal
+                <img src="./images/org-eclipse-elk-sporeOverlap_preview_overlap-removal.png" class="img" height="100px">
+            </td>
+            <td class="border_black">A node overlap removal algorithm proposed by Nachmanson et al. in “Node overlap removal by growing a tree”</td>
+            <td class="border_black">- Reliable removal of node overlaps.  Supports multiple overlap removal strategies.</td>
+            <td class="border_black">- May result in increased complexity and computation time for large graphs.</td>
+        </tr>
+        <tr>
+            <td class="border_black">Elk - DisCo
+                <img src="./images/org-eclipse-elk-disco_preview_disco_layout.png" class="img" height="100px">
+            </td>
+            <td class="border_black">Layouter for arranging unconnected subgraphs. The subgraphs themselves are, by default, not laid out.</td>
+            <td class="border_black">- Provides edge-crossing reduction mechanism to improve readability.  Can enhance the overall graph structure.</td>
+            <td class="border_black">May require adjustments to achieve desired results.</td>
+        </tr>
+    </table>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 
