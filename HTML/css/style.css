@@ -21,6 +21,21 @@ p {
     border-radius: 20px;
 }
 
+.border_black {
+    
+    border: 1.5px solid black;
+    padding: 5px;
+    
+}
+
+.table_black{
+    width: 65%; 
+    margin: 0 auto;
+    table-layout: auto;
+    border-collapse: collapse;
+    height: 10px;
+}
+
 div {
     padding: 5px;
     margin: 5px;
