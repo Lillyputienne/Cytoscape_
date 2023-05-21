@@ -1,19 +1,33 @@
-html, body {
-    height: 100%;
+body {
+    font-family:Helvetica ;
 }
 
-h2,h1 {
-    margin: 5px;
+label, p {
+    font-size: 10pt;
+}
 
+h1 {
+    font-size: 20pt;
+    color: #ffffff;
+    /* color: #0a5f94; */
+}
+
+h2 {
+    font-size: 13pt;
+}
+
+h1,h2 {
+    margin: 5px;
 }
 
 p {
     margin: 2px;
 }
 
+
 .border_blue {
-    border: 3px solid #36a9e0;
-    border-radius: 40px;
+    border: 2px solid #36a9e0;
+    border-radius: 20px;
 }
 
 .border_green {
@@ -21,11 +35,131 @@ p {
     border-radius: 20px;
 }
 
-.border_black {
+.background_green {
+    background-color: #76b72a;
+}
+
+div {
+    padding: 5px;
+    margin: 5px;
+}
+
+.table_graph {
+    width: 100%;
+    height:700px;
+}
+
+.left {
+    width: 20%;
+    text-align: center;
+    vertical-align: top;
+}
+
+.right {
+    width: 80%;
+    vertical-align: top;
+}
+
+#go {
+    width: 75%;
+    margin: 10px 0px;
+}
+
+#graph {
+    display: grid;
+    position: relative;
+    height: 97%;
+}
+
+#cy {
+    height: 500px;
+    width: 95%;
+}
+
+#legend, .node_color, .node_size {
+    padding: 1px;
+    margin: 1px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.legend-flex{
+    display: flex;
+    align-items: flex-start;
+}
+
+
+.node_color {
+    width: 45%;
+}
+
+.node_size {
+    width: 45%;
+}
+
+.legend-image {
+    width: 95%;
+}
+
+.squares {
+    display: flex;
+    align-items: center;
+}
     
+.square {
+    background: #9b9b9b; /* color of the squares */
+    font-size: 10pt;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+}
+
+#sq1 {
+    width: 15px;
+    height: 15px;
+}
+
+#sq2 {
+    width: 20px;
+    height: 20px;
+}
+
+#sq3 {
+    width: 25px;
+    height: 25px;
+}
+
+#sq4 {
+    width: 30px;
+    height: 30px;
+}
+
+#sq5 {
+    width: 35px;
+    height: 35px;
+}
+
+
+
+
+
+
+
+.image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+}
+
+.border_black {
+
     border: 1.5px solid black;
     padding: 5px;
-    
+
 }
 
 .table_black{
@@ -36,112 +170,30 @@ p {
     height: 10px;
 }
 
-div {
-    padding: 5px;
-    margin: 5px;
-}
-
-table {
-    width: 100%;
-    height: 100%;
-}
 
 
-#lower {
-    height: 95%;
-}
 
-.left {
-    width: 25%;
-    text-align: center;
-}
-
-.right {
-    width: 75%;
-}
-
-.left_button {
-    width: 75%;
-    margin: 10px 0px;
-}
-
-.lower_button {
-    /* width: 60%; */
-    text-align: center;
-    /* float: left; */
-    padding: 0;
-    margin: 0;
-}
-
-#graph {
-    position: relative;
-}
-
-#cy {
-    height: 50%;
-    width: 90%;
-  }
-
-
-#legend {
-    height: 20%;
-    width: 97%;
-}
-
-#lower_buttons {
-    height: 5%;
-}
-
-.image {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 70%;
-  }
-
-
-  .legend-flex{
-    display: flex;
-    height:60%;
-}
-
-.legend-image {
-    width: 40%;
-    height: 80px;
-}
-
-  .squares {
-    display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-left: 10%;
-    }
     
-    .square {
-       background: #9b9b9b; /* color of the squares */
-    }
-    
-    #sq1 {
-        width: 20px;
-        height: 20px;
-    }
-    
-    #sq2 {
-        width: 25px;
-        height: 25px;
-    }
-    
-    #sq3 {
-        width: 30px;
-        height: 30px;
-    }
-    
-    #sq4 {
-        width: 35px;
-        height: 35px;
+@media (max-width: 900px){ 
+    .table_graph td {
+        display: block;
     }
 
-    #sq5 {
-        width: 40px;
-        height: 40px;
+    .left ,
+    .right {
+        width: 100%;
     }
+    }
+
+
+@media (max-width: 650px){ 
+    .legend-flex {
+        display: block;
+    }
+
+    .node_color, 
+    .node_size {
+        width: 100%;
+    }
+
+}
