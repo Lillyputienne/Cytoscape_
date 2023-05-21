@@ -7,100 +7,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cytoscape</title>
     <link rel="stylesheet" href="./HTML/css/style.css">
+    <link rel="icon" href="https://www.elysia-bioscience.com/wp-content/uploads/2019/09/cropped-favicon-elysia-bioscience-192x192.png" sizes="192x192">
     <script src="./cytoscape.min.js"></script>
+
 </head>
 
 <body>
-    <table border="0">
+    <table class="table_graph" border="0" style="height:700px">
         <td class="left">
+            <div class="border_green background_green">
+                <h1>Create network</h1>                              
+            </div>                
+            <div id="json_input_square" class="border_green">
+                <h2>JSON file input</h2>
+                <input type="file" value="Submit" id="json_input_file">
+            </div>
 
-            <table style="width: 100%; " border="0">
-                <tr>
-                    <td class="border_green">
-                        <h1>Create network</h1>                              
-                    </td>
-                </tr>
+            <div class="border_green">
+                <form>
+                    <label for="input_title">Title :</label>
+                    <input type="text" id="input_title" name="input_title" placeholder="Optional: add a title.">
+                </form>
+            </div>
 
-                <tr>
-                    <td>                    
-                        <div id="json_input_square" class="border_green">
-                            <h2>JSON file input</h2>
-                            <input type="file" class="left_button" value="Submit" id="json_input_file">
-                        </div>
-                        <div class="border_green">
-                            <h2>Parameters</h2>
+            <div class="border_green">
+                <h2>Parameters</h2>
 
-                            <div class="border_blue">
-                                <p>Log Ratio :</p>
-                                <select id="log_ratio">
-                                    <option value="">--Please choose an option--</option>
-                                </select>
-                            </div>
+                <div class="border_blue">
+                    <label for="log_ratio">Log Ratio :</label>
+                    <select id="log_ratio">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
 
-                            <div class="border_blue">
-                                <p>P-value :</p>
-                                <select id="p_values">
-                                    <option value="">--Please choose an option--</option>
-                                </select>
-                            </div>
+                <div class="border_blue">
+                    <label for="p_values">P-value :</label>
+                    <select id="p_values">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
 
-                            <div class="border_blue">
-                                <p>Abundance :</p> 
-                                <select id="abundance">
-                                    <option value="">--Please choose an option--</option>
-                                </select>
-                            </div>
+                <div class="border_blue">
+                    <label for="abundance">Abundance :</label> 
+                    <select id="abundance">
+                        <option value="">--Please choose an option--</option>
+                    </select>
+                </div>
 
-                            <div class="border_blue">
-                                <p>Algorithm :</p>
-                                <select id="algorithm">
-                                    <option value="">--Please choose an option--</option>
-                                    <option value="none">Without algorithm</option>
-                                    <option value="fcose">Fcose</option>
-                                    <option value="cola">Cola</option>
-                                    <option value="cise">Cise</option>
-                                    <option value="elk_force">Elk - Force</option>
-                                    <option value="elk_spore">Elk - SPOrE</option>
-                                    <option value="elk_disco">Elk - DisCo</option>                                        
-                                </select>
-                            </div>
+                <div class="border_blue">
+                    <label for="algorithm">Algorithm :</label>
+                    <select id="algorithm">
+                        <option value="">--Please choose an option--</option>
+                        <option value="none">Without algorithm</option>
+                        <option value="fcose">Fcose</option>
+                        <option value="cola">Cola</option>
+                        <option value="cise">Cise</option>
+                        <option value="elk_force">Elk - Force</option>
+                        <option value="elk_spore">Elk - SPOrE</option>
+                        <option value="elk_disco">Elk - DisCo</option>                                        
+                    </select>
+                </div>
 
-                            <button id='go' class="left_button">Go</button>
-                        </div>
-                        <div class="border_green">
-                            <h2>Download</h2>
-                            <div id="lower_buttons">
-                                <button id="jpeg">JPEG</button>
-                                <button id="png" >PNG</button>
-                                <button id="json">JSON</button>
-                            </div>
-                        </div>
-                    </td>
-                </tr>                        
-            </table>                    
+                <button id='go'>Go</button>
+            </div>
+                        
+            <div class="border_green">
+                <h2>Download</h2>
+                <div id="download_buttons">
+                    <button id="jpeg">JPEG</button>
+                    <button id="png" >PNG</button>
+                    <button id="json">JSON</button>
+                </div>
+            </div>                 
         </td>
 
-        <td id="graph" class="right border_green">
-            <div id="cy">
-            </div>
-            <div id="legend" class="border_blue">
-                <h2>Legend</h2>
-                <div class="legend-flex">
-                <h4>Node Fill Color: </h4>
-                    <img src="legend.png" alt="color gradient" class="legend-image">
-                <h4 class="node-size">Node Size: <span id="node-selection"></span></h4>
-                    <div class="squares">
-                        <div class="square" id="sq1"></div>
-                        <div class="square" id="sq2"></div>
-                        <div class="square" id="sq3"></div>
-                        <div class="square" id="sq4"></div>
-                        <div class="square" id="sq5"></div>
+        <td class="right">
+            <div id="graph" class="border_green">
+
+                <div id="cy">
+                </div> 
+
+                <div class="border_blue flex">
+                    <h2>Title :</h2>
+                    <p id="graph_title"></p>
+                </div>
+
+                <div id="legend" class="border_blue">
+                    <h2>Legend : </h2>
+                    <div class="legend-flex">
+                        <div class="node_color">
+                            <p>Node Fill Color: </p>
+                            <img src="legend.png" alt="color gradient" class="legend-image">                            
+                        </div>
+                        <div class="node_size">
+                            <p>Node Size: <span id="node-selection"></span></p>
+                            <div class="squares">
+                                <div class="square" id="sq1"></div>
+                                <div class="square" id="sq2"></div>
+                                <div class="square" id="sq3"></div>
+                                <div class="square" id="sq4"></div>
+                                <div class="square" id="sq5"></div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </td>
     </table>
-    
+
     <br>
     <br>
     <br>
@@ -181,7 +196,7 @@
             <td class="border_black">May require adjustments to achieve desired results.</td>
         </tr>
     </table>
-
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 
     <script src="index.js"></script>
