@@ -268,7 +268,7 @@ function check_parameters(file) {
   return true;
 };
 
-function title_graph(file, log_ratio, p_value, abundance,title) {
+function title_graph(title, file, log_ratio, p_value, abundance, algo) {
   if (title =='') {
     document.getElementById('graph_title').innerText = `${file.name} : ${p_value}, ${log_ratio}, ${abundance}, ${algo}`
   }
@@ -312,7 +312,7 @@ go.addEventListener('click', function() {
 
       var layout_options = switch_algo(algo);
       var cy = display_cytoscape(json, log_ratio, p_value, abundance, layout_options);
-      title_graph(file, log_ratio, p_value, abundance,title);
+      title_graph(title, file, log_ratio, p_value, abundance, algo);
       size_legend(json,abundance);
       window.cy = cy;
     }
