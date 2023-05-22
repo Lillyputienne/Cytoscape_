@@ -146,21 +146,16 @@ function switch_algo(algo) {
     case 'cise' :
       layout_options = {
         name: 'cise',
-        idealEdgeLength: 20,
+        nodeSeparation: 50,
+        idealInterClusterEdgeLengthCoefficient: 6,
+        nodeRepulsion: 5000,
         edgeElasticity: 0.2,
-        nodeOverlap: 15,
-        nodeRepulsion: 800,
-        nodeAttraction: 1000,
-        gravity: 50,
-        numIter: 1000,
-        tilingPaddingVertical: 10,
-        tilingPaddingHorizontal: 10,
-        tilingPaddingRatio: 0.5,
-        randomize: true,
-        animate: false,
-        animationDuration: 500,
-        animationEasing: 'ease-out',
-        // nestingFactor: 0.1,
+        gravityRangeCompound: 1.5,
+        gravityCompound: 10,
+        tile: true,
+        fit : true,
+        nodeSeparation : 15,
+        nestingFactor: 2 
    // Redimensionnement automatique
       };
       break;
