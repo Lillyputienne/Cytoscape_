@@ -156,7 +156,6 @@ function switch_algo(algo) {
         fit : true,
         nodeSeparation : 15,
         nestingFactor: 2 
-   // Redimensionnement automatique
       };
       break;
 
