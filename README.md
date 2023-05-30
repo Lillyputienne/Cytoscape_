@@ -8,6 +8,4 @@ To use this code, you will have to use a local server.
 In the Visual Studio Code source code editor, you can add the "Live server" extension.
 Then run your code by clicking on the "Go live" button.
 
-![vscode-live-server-animated-demo](https://github.com/ecoutaud/Cytoscape_/assets/129045668/594b9357-c6a6-40a4-b412-5bc430569328)
-
 Source : Dey, R. (2017, June 27). Ritwickdey/vscode-live-server-plus-plus: VsCode Live Server++ : It’s truly live 😊 (beta) -- [not released yet]. GitHub. https://github.com/ritwickdey/vscode-live-server-plus-plus#readme 
